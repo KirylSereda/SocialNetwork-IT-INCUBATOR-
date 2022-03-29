@@ -10,7 +10,7 @@ export const Profile = () => {
       <div>
         ava + description
       </div>
-      <MyPosts />
+      <MyPosts message='Hi, how are you?' />
     </div>
   )
 }
