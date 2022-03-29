@@ -1,14 +1,16 @@
 import "./App.css";
-import {Technologies} from "./Technologies";
-import {Header} from "./Header";
+import { Profile } from "./components/Profile/Profile";
+import { Navbar } from "./components/Navbar/Navbar";
+import { Header } from "./components/Header/Header";
 
 function App() {
-  return (
-    <div>
-      <Header/>
-      <Technologies/>
-    </div>
-  );
+    return (
+        <div className="app-wrapper">
+            <Header />
+            <Navbar />
+            <Profile />
+        </div>
+    );
 }
 
 export default App;
