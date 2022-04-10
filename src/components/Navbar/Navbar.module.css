@@ -3,10 +3,14 @@
     background-color: burlywood;
 }
 
-.item {
+.item a{
     color: white;
 }
 
-.item.active {
+.activeLink {
     color: gold;
+}
+
+.notactiveLink {
+    color:green
 }

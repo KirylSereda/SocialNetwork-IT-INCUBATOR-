@@ -1,20 +1,15 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 import s from './Navbar.module.css';
 
-let c1 = "item";
-let c2 = "active";
-
-let classes = c1 + " " + c2;
-let classesNew = `${s.item} ${c2}`;
-
-
- export const Navbar = () => {
+export const Navbar = () => {
     return <nav className={s.nav}>
-        <div className={s.item}>
-            <a>Profile</a>
+        <div >
+            <NavLink to='/profile' className={({ isActive }) => (isActive ? s.activeLink : s.notactiveLink)}>s</NavLink>
         </div>
-        <div className={`${s.item} ${s.active}`}>
-            <a>Messages</a>
+        <div >
+            <NavLink to='/dialog' className={({ isActive }) => (isActive ? s.activeLink : s.notactiveLink)}>s</NavLink>
         </div>
         <div className={s.item}>
             <a>News</a>
@@ -25,6 +20,6 @@ let classesNew = `${s.item} ${c2}`;
         <div className={s.item}>
             <a>Settings</a>
         </div>
-    </nav>
+    </nav >
 }
 
