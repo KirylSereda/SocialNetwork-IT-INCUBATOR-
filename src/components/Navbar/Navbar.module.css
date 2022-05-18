@@ -3,14 +3,12 @@
     background-color: burlywood;
 }
 
-.item a{
+.item {
     color: white;
+    text-decoration: none;
 }
 
 .activeLink {
     color: gold;
-}
-
-.notactiveLink {
-    color:green
+    text-decoration: none;
 }
