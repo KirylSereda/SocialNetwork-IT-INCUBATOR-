@@ -1,21 +1,16 @@
+
+import { PostsType } from '../../Redux/Store';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
-
-type MyPostPropsType = {
-  message?: string
+type PropsType = {
+  posts: PostsType
 }
 
-const MyPosts: React.FC<MyPostPropsType> = (props) => {
+const MyPosts: React.FC<PropsType> = (props) => {
 
-  const postData = [
-    { id: 1, message: 'Hi', likesCount: 12 },
-    { id: 2, message: 'How are you?', likesCount: 12 },
-    { id: 3, message: 'Yo', likesCount: 12 },
-    { id: 4, message: 'Yo', likesCount: 12 },
-    { id: 5, message: 'Yo', likesCount: 12 },
-    { id: 6, message: 'Yo', likesCount: 12 }
-  ]
+  let postsElements = props.posts.map(p => <Post post={p.message} likesCount={p.likesCount} />)
+
   return (
     <div className={s.postBlock}>
       <h3>  My posts</h3>
@@ -28,8 +23,7 @@ const MyPosts: React.FC<MyPostPropsType> = (props) => {
         </div>
       </div>
       <div className={s.posts}>
-        <Post post={postData[0].message} likesCount={postData[0].likesCount} />
-        <Post post={postData[1].message} likesCount={postData[1].likesCount} />
+        {postsElements}
       </div>
     </div >
   )
