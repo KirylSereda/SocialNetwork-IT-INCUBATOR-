@@ -1,29 +1,37 @@
 
-import React, { RefObject } from 'react';
-import { PostsType } from '../../Redux/Store';
+import React from 'react';
+import { PostType } from '../../Redux/Store';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 type PropsType = {
-  posts: PostsType
-  addPost: (postMessage: string) => void
+  posts: Array<PostType>
+  newPostText: string
+  addPost: () => void
+  upDateNewPostText: (newPostText: string) => void
 }
 
 const MyPosts: React.FC<PropsType> = (props) => {
 
   let postsElements = props.posts.map(p => <Post post={p.message} likesCount={p.likesCount} />)
-  const newPostElement: any = React.createRef()
+  const newPostElement = React.createRef<HTMLTextAreaElement>()
 
   const addPost = () => {
-    let text: any = newPostElement.current.value
-    props.addPost(text)
+    props.addPost()
   }
+
+  const onPostChange = () => {
+    if (newPostElement.current) {
+      props.upDateNewPostText(newPostElement.current?.value)
+    }
+  }
+
   return (
     <div className={s.postBlock}>
       <h3>  My posts</h3>
       <div>
         <div>
-          <textarea ref={newPostElement}></textarea>
+          <textarea ref={newPostElement} onChange={onPostChange} value={props.newPostText}></textarea>
         </div>
         <div>
           <button onClick={addPost}>Add post</button>

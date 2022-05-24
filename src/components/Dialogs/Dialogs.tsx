@@ -1,13 +1,13 @@
 
 
-import { DialogsType, MessagesType } from '../Redux/Store'
+import { DialogType, MessageType } from '../Redux/Store'
 import { DialogItem } from './DialogItem/DialogItem'
 import s from './Dialogs.module.css'
 import { Message } from './Message/Message'
 
 type PropsType = {
-    dialogs: DialogsType
-    messages: MessagesType
+    dialogs: Array<DialogType>
+    messages: Array<MessageType>
 }
 
 export const Dialogs = (props: PropsType) => {
