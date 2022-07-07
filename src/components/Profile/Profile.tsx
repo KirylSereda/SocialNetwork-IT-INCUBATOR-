@@ -5,8 +5,8 @@ import { PostType } from '../Redux/Store';
 type PropsType = {
   posts: Array<PostType>
   newPostText: string
-  addPost: () => void
-  upDateNewPostText: (newPostText: string) => void
+  dispatch: (action: any) => void
+
 }
 
 export const Profile = (props: PropsType) => {
@@ -14,8 +14,8 @@ export const Profile = (props: PropsType) => {
     <div >
       <ProfileInfo />
       <MyPosts posts={props.posts}
-        addPost={props.addPost}
-        upDateNewPostText={props.upDateNewPostText}
+        dispatch={props.dispatch}
+
         newPostText={props.newPostText} />
     </div >
   )

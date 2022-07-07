@@ -4,10 +4,11 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { Header } from "./components/Header/Header";
 import { Dialogs } from "./components/Dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
-import { addPost, StateType, upDateNewPostText } from "./components/Redux/Store";
+import { StateType, StoreType } from "./components/Redux/Store";
 
 type PropsType = {
     state: StateType
+    dispatch: (action: any) => void
 }
 
 function App(props: PropsType) {
@@ -19,11 +20,13 @@ function App(props: PropsType) {
                 <div className='app-wrapper-content'>
                     <Route path="/dialogs/" render={() => <Dialogs
                         dialogs={props.state.dialogsPage.dialogs}
-                        messages={props.state.dialogsPage.messages} />} />
+                        messages={props.state.dialogsPage.messages}
+                        newMessageBody={props.state.dialogsPage.newMessageBody}
+                        dispatch={props.dispatch} />} />
                     <Route path="/profile/" render={() => <Profile
                         posts={props.state.profilePage.posts}
-                        addPost={addPost}
-                        upDateNewPostText={upDateNewPostText}
+                        dispatch={props.dispatch}
+
                         newPostText={props.state.profilePage.newPostText} />} />
                 </div>
             </div>
