@@ -1,3 +1,6 @@
+import { dialogsReducer, SendMessageAT, UpdateNewMessageBodyAT } from './dialogs-reducer'
+import { AddPostAT, profileReducer, UpdateNewPostTextAT } from './profile-reducer'
+
 export type PostType = {
     id: number
     message: string
@@ -29,18 +32,15 @@ export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
 }
+
+export type ActionsType = AddPostAT | UpdateNewPostTextAT | SendMessageAT | UpdateNewMessageBodyAT
 export type StoreType = {
     _state: StateType
     getState: () => StateType
     _callSubscriber: () => void
     subscriber: (observer: () => void) => void
-    dispatch: (action: any) => void
+    dispatch: (action: ActionsType) => void
 }
-
-const ADD_POST = 'ADD-POST'
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY'
-const SEND_MESSAGE = 'ADD-NEW-MESSAGE'
 
 export let store: StoreType = {
     _state: {
@@ -86,41 +86,8 @@ export let store: StoreType = {
         this._callSubscriber = observer
     },
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            this._state.profilePage.posts.push({
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: 1,
-            })
-            this._state.profilePage.newPostText = ''
-            this._callSubscriber()
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newPostText
-            this._callSubscriber()
-        } else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-            this._state.dialogsPage.newMessageBody = action.body
-            this._callSubscriber()
-        } else if (action.type === SEND_MESSAGE) {
-            let body = this._state.dialogsPage.newMessageBody
-            this._state.dialogsPage.newMessageBody = ''
-            this._state.dialogsPage.messages.push({ id: 6, message: body })
-            this._callSubscriber()
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._callSubscriber()
     },
-}
-
-export const addPostAC = () => {
-    return { type: ADD_POST }
-}
-
-export const updateNewPostTextAC = (newText: string) => {
-    return { type: UPDATE_NEW_POST_TEXT, newPostText: newText }
-}
-
-export const sendMessageAC = () => {
-    return { type: SEND_MESSAGE }
-}
-
-export const updateNewMessageBodyAC = (body: string) => {
-    return { type: UPDATE_NEW_MESSAGE_BODY, body: body }
 }

@@ -1,7 +1,6 @@
-
-
 import { ChangeEvent } from 'react'
-import { DialogType, MessageType, sendMessageAC, updateNewMessageBodyAC } from '../Redux/Store'
+import { sendMessageAC, updateNewMessageBodyAC } from '../Redux/dialogs-reducer'
+import { ActionsType, DialogType, MessageType, } from '../Redux/Store'
 import { DialogItem } from './DialogItem/DialogItem'
 import s from './Dialogs.module.css'
 import { Message } from './Message/Message'
@@ -10,7 +9,7 @@ type PropsType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
     newMessageBody: string
-    dispatch: (action: any) => void
+    dispatch: (action: ActionsType) => void
 }
 
 export const Dialogs = (props: PropsType) => {

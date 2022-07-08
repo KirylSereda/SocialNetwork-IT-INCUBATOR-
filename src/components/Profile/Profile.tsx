@@ -1,12 +1,11 @@
 import MyPosts from './MyPosts/MyPosts';
 import { ProfileInfo } from './ProfileInfo/ProfileInfo';
-import { PostType } from '../Redux/Store';
+import { ActionsType, PostType, } from '../Redux/Store';
 
 type PropsType = {
   posts: Array<PostType>
   newPostText: string
-  dispatch: (action: any) => void
-
+  dispatch: (action: ActionsType) => void
 }
 
 export const Profile = (props: PropsType) => {
