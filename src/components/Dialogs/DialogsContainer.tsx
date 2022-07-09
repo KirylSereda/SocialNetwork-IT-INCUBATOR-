@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import { sendMessageAC, updateNewMessageBodyAC } from '../Redux/dialogs-reducer'
 import { AppRootStateType } from '../Redux/redux-store'
 import { DialogsPageType } from '../Redux/types'
@@ -19,7 +20,7 @@ let mapStateToProps = (state: AppRootStateType): MapStateToPropsType => {
     }
 }
 
-let mapDispatchToProps = (dispatch: any): mapDispatchToPropsType => {
+let mapDispatchToProps = (dispatch: Dispatch): mapDispatchToPropsType => {
     return {
         sendMessage: () => {
             dispatch(sendMessageAC())

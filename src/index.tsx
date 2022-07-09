@@ -19,4 +19,3 @@ export const rerenderEntireTree = () => {
 
 rerenderEntireTree()
 
-store.subscribe(rerenderEntireTree)
