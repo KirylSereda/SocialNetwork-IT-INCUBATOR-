@@ -1,6 +1,7 @@
 import MyPosts from './MyPosts/MyPosts';
 import { ProfileInfo } from './ProfileInfo/ProfileInfo';
-import { ActionsType, PostType, } from '../Redux/Store';
+import { ActionsType, PostType, } from '../Redux/types';
+import MyPostsContainer from './MyPosts/MyPostsContainer';
 
 type PropsType = {
   posts: Array<PostType>
@@ -12,9 +13,9 @@ export const Profile = (props: PropsType) => {
   return (
     <div >
       <ProfileInfo />
-      <MyPosts posts={props.posts}
+      <MyPostsContainer
+        posts={props.posts}
         dispatch={props.dispatch}
-
         newPostText={props.newPostText} />
     </div >
   )

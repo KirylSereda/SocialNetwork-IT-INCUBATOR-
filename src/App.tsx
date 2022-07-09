@@ -4,7 +4,8 @@ import { Navbar } from "./components/Navbar/Navbar";
 import { Header } from "./components/Header/Header";
 import { Dialogs } from "./components/Dialogs/Dialogs";
 import { BrowserRouter, Route } from "react-router-dom";
-import { StateType, StoreType } from "./components/Redux/Store";
+import { StateType } from "./components/Redux/types";
+import { DialogsContainer } from "./components/Dialogs/DialogsContainer";
 
 type PropsType = {
     state: StateType
@@ -18,7 +19,7 @@ function App(props: PropsType) {
                 <Header />
                 <Navbar />
                 <div className='app-wrapper-content'>
-                    <Route path="/dialogs/" render={() => <Dialogs
+                    <Route path="/dialogs/" render={() => <DialogsContainer
                         dialogs={props.state.dialogsPage.dialogs}
                         messages={props.state.dialogsPage.messages}
                         newMessageBody={props.state.dialogsPage.newMessageBody}
