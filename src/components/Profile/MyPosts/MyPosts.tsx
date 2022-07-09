@@ -7,7 +7,7 @@ import s from './MyPosts.module.css';
 import Post from './Post/Post';
 
 type PropsType = {
-  updateNewPostTextAC: (text: string) => void
+  updateNewPostText: (text: string) => void
   addPost: () => void
   posts: Array<PostType>
   newPostText: string
@@ -22,7 +22,7 @@ export const MyPosts: React.FC<PropsType> = (props) => {
   }
 
   const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    props.updateNewPostTextAC(e.currentTarget.value)
+    props.updateNewPostText(e.currentTarget.value)
   }
 
   return (
