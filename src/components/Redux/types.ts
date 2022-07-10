@@ -1,5 +1,6 @@
 import { SendMessageAT, UpdateNewMessageBodyAT } from './dialogs-reducer'
 import { AddPostAT, UpdateNewPostTextAT } from './profile-reducer'
+import { FollowAT, setUsersAT, UnfollowAT } from './users-reducer'
 
 export type PostType = {
     id: number
@@ -27,10 +28,28 @@ export type DialogsPageType = {
     messages: Array<MessageType>
     newMessageBody: string
 }
+export type UserType = {
+    id: number
+    followed: boolean
+    photoUrl: string
+    fullName: string
+    status: string
+    location: { city: string; country: string }
+}
+export type UsersPageType = {
+    users: Array<UserType>
+}
 
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
 }
 
-export type ActionsType = AddPostAT | UpdateNewPostTextAT | SendMessageAT | UpdateNewMessageBodyAT
+export type ActionsType =
+    | AddPostAT
+    | UpdateNewPostTextAT
+    | SendMessageAT
+    | UpdateNewMessageBodyAT
+    | FollowAT
+    | UnfollowAT
+    | setUsersAT
