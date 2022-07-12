@@ -30,7 +30,7 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Ac
         case SEND_MESSAGE:
             return {
                 ...state,
-                messages: [...state.messages, { id: 6, message: state.newMessageBody }],
+                messages: [...state.messages, { id: 7, message: state.newMessageBody }],
                 newMessageBody: '',
             }
         default:

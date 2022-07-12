@@ -30,11 +30,13 @@ export type DialogsPageType = {
 }
 export type UserType = {
     id: number
-    followed: boolean
-    photoUrl: string
-    fullName: string
+    name: string
     status: string
-    location: { city: string; country: string }
+    photos: {
+        small: string
+        large: string
+    }
+    followed: boolean
 }
 export type UsersPageType = {
     users: Array<UserType>
