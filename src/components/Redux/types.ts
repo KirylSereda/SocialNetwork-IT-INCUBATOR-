@@ -1,6 +1,12 @@
 import { SendMessageAT, UpdateNewMessageBodyAT } from './dialogs-reducer'
 import { AddPostAT, UpdateNewPostTextAT } from './profile-reducer'
-import { FollowAT, setUsersAT, UnfollowAT } from './users-reducer'
+import {
+    FollowAT,
+    SetCurrentPageAT,
+    SetTotalUsersCountAT,
+    SetUsersAT,
+    UnfollowAT,
+} from './users-reducer'
 
 export type PostType = {
     id: number
@@ -40,6 +46,9 @@ export type UserType = {
 }
 export type UsersPageType = {
     users: Array<UserType>
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 
 export type StateType = {
@@ -54,4 +63,6 @@ export type ActionsType =
     | UpdateNewMessageBodyAT
     | FollowAT
     | UnfollowAT
-    | setUsersAT
+    | SetUsersAT
+    | SetCurrentPageAT
+    | SetTotalUsersCountAT
