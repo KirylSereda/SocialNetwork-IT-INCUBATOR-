@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import userPhoto from '../../assets/images/user.png'
 import { UserType } from '../Redux/types'
 import style from './Users.module.css'
@@ -33,7 +34,9 @@ export const Users = (props: PropsType) => {
             props.users.map(u => <div key={u.id}>
                 <span>
                     <div>
-                        <img className={style.userPhoto} src={u.photos.small != null ? u.photos.small : userPhoto} />
+                        <NavLink to={"/profile/" + u.id}>
+                            <img className={style.userPhoto} src={u.photos.small != null ? u.photos.small : userPhoto} />
+                        </NavLink>
                     </div>
                     <div>{u.followed ? <button onClick={() => { props.unfollow(u.id) }}>Unfollow</button> :
                         <button onClick={() => { props.follow(u.id) }}>Follow</button>}

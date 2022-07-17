@@ -1,10 +1,15 @@
+import { ProfileType } from '../../Redux/types';
 import s from './ProfileInfo.module.css';
 
-export const ProfileInfo = () => {
+type PropsType = {
+  profile: ProfileType
+}
+
+export const ProfileInfo = (props: PropsType) => {
   return (
     <div >
       <div >
-        <img className={s.img} alt='profile-img' src='https://previews.123rf.com/images/koblizeek/koblizeek2001/koblizeek200100050/138262629-man-icon-profile-member-user-perconal-symbol-vector-on-white-isolated-background-.jpg' />
+        <img className={s.img} alt='profile-img' src={props.profile.photos.large} />
       </div>
       <div className={s.descriptionBlock}>
         ava + description

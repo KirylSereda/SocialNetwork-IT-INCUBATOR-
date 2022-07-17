@@ -1,5 +1,5 @@
 import { SendMessageAT, UpdateNewMessageBodyAT } from './dialogs-reducer'
-import { AddPostAT, UpdateNewPostTextAT } from './profile-reducer'
+import { AddPostAT, UpdateNewPostTextAT, UsetUserProfileAT } from './profile-reducer'
 import {
     FollowAT,
     SetCurrentPageAT,
@@ -25,9 +25,34 @@ export type MessageType = {
     message: string
 }
 
+export type ContactsType = {
+    facebook: string
+    website: string
+    vk: string
+    twitter: string
+    instagram: string
+    youtube: string
+    github: string
+    mainLink: string
+}
+
+export type PhotosType = {
+    small: string
+    large: string
+}
+export type ProfileType = {
+    aboutMe: string
+    lookingForAJob: boolean
+    lookingForAJobDescription: string
+    fullName: string
+    contacts: ContactsType
+    photos: PhotosType
+}
+
 export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
+    profile: {}
 }
 
 export type DialogsPageType = {
@@ -69,3 +94,4 @@ export type ActionsType =
     | SetCurrentPageAT
     | SetTotalUsersCountAT
     | SetIsFetchingAT
+    | UsetUserProfileAT
