@@ -3,6 +3,7 @@ import { AddPostAT, UpdateNewPostTextAT } from './profile-reducer'
 import {
     FollowAT,
     SetCurrentPageAT,
+    SetIsFetchingAT,
     SetTotalUsersCountAT,
     SetUsersAT,
     UnfollowAT,
@@ -49,6 +50,7 @@ export type UsersPageType = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    isFetching: boolean
 }
 
 export type StateType = {
@@ -66,3 +68,4 @@ export type ActionsType =
     | SetUsersAT
     | SetCurrentPageAT
     | SetTotalUsersCountAT
+    | SetIsFetchingAT
