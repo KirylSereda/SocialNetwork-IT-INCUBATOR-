@@ -1,0 +1,8 @@
+.appWrapper {
+    width: 100%;
+}
+
+.appWrapperContent {
+    background-color: cornflowerblue;
+    display: flex;
+}

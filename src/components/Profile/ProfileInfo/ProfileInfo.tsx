@@ -1,3 +1,4 @@
+
 import { ProfileType } from '../../Redux/types';
 import s from './ProfileInfo.module.css';
 
@@ -6,6 +7,7 @@ type PropsType = {
 }
 
 export const ProfileInfo = (props: PropsType) => {
+
   return (
     <div >
       <div >

@@ -1,3 +1,4 @@
+import { SetUserDataAT } from './auth-reducer'
 import { SendMessageAT, UpdateNewMessageBodyAT } from './dialogs-reducer'
 import { AddPostAT, UpdateNewPostTextAT, UsetUserProfileAT } from './profile-reducer'
 import {
@@ -52,7 +53,7 @@ export type ProfileType = {
 export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
-    profile: {}
+    profile: ProfileType
 }
 
 export type DialogsPageType = {
@@ -78,9 +79,23 @@ export type UsersPageType = {
     isFetching: boolean
 }
 
+export type Auth = {
+    id: number
+    email: string
+    login: string
+    isAuth: boolean
+}
+
+export type AuthDataType = {
+    id: number
+    email: string
+    login: string
+}
+
 export type StateType = {
     profilePage: ProfilePageType
     dialogsPage: DialogsPageType
+    auth: Auth
 }
 
 export type ActionsType =
@@ -95,3 +110,4 @@ export type ActionsType =
     | SetTotalUsersCountAT
     | SetIsFetchingAT
     | UsetUserProfileAT
+    | SetUserDataAT
