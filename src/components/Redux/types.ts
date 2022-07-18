@@ -4,6 +4,7 @@ import { AddPostAT, UpdateNewPostTextAT, UsetUserProfileAT } from './profile-red
 import {
     FollowAT,
     SetCurrentPageAT,
+    SetFollowingInProgressAT,
     SetIsFetchingAT,
     SetTotalUsersCountAT,
     SetUsersAT,
@@ -77,6 +78,7 @@ export type UsersPageType = {
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
+    followingInProgress: Array<number>
 }
 
 export type Auth = {
@@ -111,3 +113,4 @@ export type ActionsType =
     | SetIsFetchingAT
     | UsetUserProfileAT
     | SetUserDataAT
+    | SetFollowingInProgressAT
