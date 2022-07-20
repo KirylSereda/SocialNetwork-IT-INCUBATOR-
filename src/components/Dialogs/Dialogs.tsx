@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react'
-import { sendMessageAC, updateNewMessageBodyAC } from '../Redux/dialogs-reducer'
-import { ActionsType, DialogsPageType, DialogType, MessageType, } from '../Redux/types'
+import { Redirect } from 'react-router-dom'
+import { DialogsPageType, } from '../Redux/types'
 import { DialogItem } from './DialogItem/DialogItem'
 import s from './Dialogs.module.css'
 import { Message } from './Message/Message'
@@ -9,6 +9,7 @@ type PropsType = {
     dialogsPage: DialogsPageType
     updateNewMessageBody: (text: string) => void
     sendMessage: () => void
+    auth: boolean
 }
 
 export const Dialogs = (props: PropsType) => {
@@ -23,6 +24,10 @@ export const Dialogs = (props: PropsType) => {
         props.updateNewMessageBody(e.currentTarget.value)
     }
 
+
+    if (!props.auth) {
+        return <Redirect to={'/login'} />
+    }
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>

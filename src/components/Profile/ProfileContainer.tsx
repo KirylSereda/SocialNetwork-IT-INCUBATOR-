@@ -1,8 +1,7 @@
-import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { setUserProfile } from "../Redux/profile-reducer";
+import { getUserProfile } from "../Redux/profile-reducer";
 import { AppRootStateType } from "../Redux/redux-store";
 import { ProfileType } from "../Redux/types";
 import { Profile } from "./Profile";
@@ -13,11 +12,11 @@ type PathParamsType = {
 
 type MapStateToPropsType = {
     profile: ProfileType
-
+    auth: boolean
 }
 
 type MapDispatchToPropsType = {
-    setUserProfile: (profile: ProfileType) => void
+    getUserProfile: (userId: string) => void
 }
 
 type OwnPropsType = MapStateToPropsType & MapDispatchToPropsType
@@ -32,23 +31,22 @@ class ProfileContainer extends React.Component<PropsType, {}> {
         if (!userId) {
             userId = '2'
         }
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-            .then(response => {
-                this.props.setUserProfile(response.data)
-            })
+        this.props.getUserProfile(userId)
     }
+
 
     render() {
         return (
-            <Profile profile={this.props.profile} />
+            <Profile profile={this.props.profile} auth={this.props.auth} />
         )
     }
 }
 
 let mapStateToProps = (state: AppRootStateType): MapStateToPropsType => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    auth: state.auth.isAuth
 })
 
 
 let WitchUrlDataContainerComponent = withRouter(ProfileContainer)
-export default connect(mapStateToProps, { setUserProfile })(WitchUrlDataContainerComponent)
+export default connect(mapStateToProps, { getUserProfile })(WitchUrlDataContainerComponent)

@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom'
-import { usersAPI } from '../../api/api'
 import userPhoto from '../../assets/images/user.png'
 import { UserType } from '../Redux/types'
 import style from './Users.module.css'
@@ -12,7 +11,6 @@ type PropsType = {
     follow: (userId: number) => void,
     unfollow: (userId: number) => void,
     onPageChange: (p: number) => void,
-
     followingInProgress: Array<number>
 }
 

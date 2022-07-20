@@ -1,8 +1,7 @@
-import axios from 'axios';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { setUserData } from '../Redux/auth-reducer';
+import { getAuthUserData } from '../Redux/auth-reducer';
 import { AppRootStateType } from '../Redux/redux-store';
 import { AuthDataType } from '../Redux/types';
 import s from './Header.module.css';
@@ -11,15 +10,9 @@ export const Header = () => {
     let dispatch = useDispatch()
     let isAuth = useSelector<AppRootStateType, boolean>(state => state.auth.isAuth)
     let authData = useSelector<AppRootStateType, AuthDataType>(state => state.auth)
+
     useEffect(() => {
-
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, { withCredentials: true })
-            .then(response => {
-                if (response.data.resultCode == 0) {
-                    dispatch(setUserData(response.data.data))
-                }
-
-            })
+        dispatch(getAuthUserData)
     }, [])
 
     return <div className={s.header}>
