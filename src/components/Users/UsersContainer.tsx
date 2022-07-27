@@ -5,6 +5,7 @@ import { follow, setCurrentPage, setFollowingInProgress, getUsers, unfollow } fr
 import React from "react";
 import { Users } from "./Users";
 import { Preolder } from "../Common/Preolder";
+import { compose } from "redux";
 
 type PropsType = {
     users: Array<UserType>
@@ -67,9 +68,10 @@ let mapStateToProps = (state: AppRootStateType): MapStateToPropsType => {
     }
 }
 
-export default connect(mapStateToProps, {
-    follow, unfollow,
-    setCurrentPage,
-    setFollowingInProgress,
-    getUsers
-})(UsersContainer)
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, {
+        follow, unfollow,
+        setCurrentPage,
+        setFollowingInProgress,
+        getUsers
+    }))(UsersContainer)

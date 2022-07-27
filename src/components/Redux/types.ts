@@ -1,6 +1,6 @@
 import { SetUserDataAT } from './auth-reducer'
 import { SendMessageAT, UpdateNewMessageBodyAT } from './dialogs-reducer'
-import { AddPostAT, UpdateNewPostTextAT, UsetUserProfileAT } from './profile-reducer'
+import { AddPostAT, SetStatusAT, UpdateNewPostTextAT, UsetUserProfileAT } from './profile-reducer'
 import {
     FollowAT,
     SetCurrentPageAT,
@@ -55,6 +55,7 @@ export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
     profile: ProfileType
+    status: string
 }
 
 export type DialogsPageType = {
@@ -114,3 +115,4 @@ export type ActionsType =
     | UsetUserProfileAT
     | SetUserDataAT
     | SetFollowingInProgressAT
+    | SetStatusAT

@@ -1,7 +1,7 @@
 import { Navbar } from "./components/Navbar/Navbar";
 import { Header } from "./components/Header/Header";
 import { Route } from "react-router-dom";
-import { DialogsContainer } from "./components/Dialogs/DialogsContainer";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import style from './App.module.css'
